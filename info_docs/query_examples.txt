@@ -1,0 +1,46 @@
+SELECT 	species.species_id, 
+	species.species_latin_name, 
+	species.genus_id, 
+	genera.genus_latin_name,
+	genera.family_id,
+	families.family_latin_name,
+	families.order_id,
+	orders.order_latin_name,
+	orders.phylum_id,
+	phyla.phylum_latin_name
+FROM whatplant.species 
+JOIN whatplant.genera ON species.genus_id = genera.genus_id
+JOIN whatplant.families ON genera.family_id = families.family_id
+JOIN whatplant.orders ON families.order_id = orders.order_id
+JOIN whatplant.phyla ON orders.phylum_id = phyla.phylum_id
+WHERE species.species_latin_name = 'Acanthus mollis'
+
+
+
+
+
+
+SELECT 	species.species_id, 
+	species.species_latin_name, 
+	species.genus_id, 
+	genera.genus_latin_name,
+	genera.subtribe_id,
+	subtribes.subtribe_latin_name,
+	subtribes.tribe_id,
+	tribes.tribe_latin_name,
+	tribes.subfamily_id,
+	subfamilies.subfamily_latin_name,
+	subfamilies.family_id,
+	families.family_latin_name,
+	families.order_id,
+	orders.order_latin_name,
+	orders.phylum_id
+FROM whatplant.species 
+JOIN whatplant.genera ON species.genus_id = genera.genus_id
+JOIN whatplant.subtribes ON genera.subtribe_id = subtribes.subtribe_id
+JOIN whatplant.tribes ON subtribes.tribe_id = tribes.tribe_id
+JOIN whatplant.subfamilies ON tribes.subfamily_id = subfamilies.subfamily_id
+JOIN whatplant.families ON subfamilies.family_id = families.family_id
+JOIN whatplant.orders ON families.order_id = orders.order_id
+JOIN whatplant.phyla ON orders.phylum_id = phyla.phylum_id
+WHERE species.species_latin_name = 'Crepis rubra'
